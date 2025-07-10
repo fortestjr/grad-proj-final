@@ -56,14 +56,13 @@ export class PythonService {
     async #runPythonScript(scriptPath, args = []) {
         let pythonProcess;
         let timeoutId;
-        
         try {
             const controller = new AbortController();
             timeoutId = setTimeout(() => controller.abort(), this.timeout);
             
-            console.log(`🚀 Executing: ${this.pythonBinary} ${scriptPath} ${args.join(' ')}`);
+            console.log(`🚀 Executing: ${this.pythonBinary} ${scriptPath.replace(/\\/g, '/')} ${args.join(' ')}`);
 
-            pythonProcess = spawn(this.pythonBinary, [scriptPath, ...args], {
+            pythonProcess = spawn(this.pythonBinary, [scriptPath.replace(/\\/g, '/'), ...args], {
                 signal: controller.signal
             });
 
