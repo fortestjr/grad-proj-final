@@ -42,8 +42,8 @@ A comprehensive security toolkit API that provides a centralized platform for ru
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/JoeAlNaggar/node-api-backend.git
-   cd node-api-backend
+   git clone https://github.com/fortestjr/grad-proj-final.git
+   cd grad-proj-final
    ```
 
 2. **Create and activate Python virtual environment**

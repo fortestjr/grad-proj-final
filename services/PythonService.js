@@ -60,9 +60,9 @@ export class PythonService {
             const controller = new AbortController();
             timeoutId = setTimeout(() => controller.abort(), this.timeout);
             
-            console.log(`🚀 Executing: ${this.pythonBinary} ${scriptPath.replace(/\\/g, '/')} ${args.join(' ')}`);
+            console.log(`🚀 Executing: ${this.pythonBinary} ${scriptPath} ${args.join(' ')}`);
 
-            pythonProcess = spawn(this.pythonBinary, [scriptPath.replace(/\\/g, '/'), ...args], {
+            pythonProcess = spawn(this.pythonBinary, [scriptPath, ...args], {
                 signal: controller.signal
             });
 

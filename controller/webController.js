@@ -4,7 +4,7 @@ import fs from "fs/promises"
 // Input Method: The script expects a single command-line argument: a URL. ex.(python script.py http://example.com)
 const SSRFScanController = async (req, res) => {
     try {
-        const domain = req.body.target
+        const domain = req.body.target || req.query.target
         console.log(req.body)
         console.log(req.query)
         
@@ -187,9 +187,9 @@ const loggingFailureController = async (req, res) => {
 const identifyFailureController = async (req, res) => {
     try {
         // Accept a single string or separate fields
-        let url = req.body.url
-        let auth_endpoint = req.body.auth_endpoint 
-        let credentials = req.body.credentials 
+        let url = req.body.url || req.query.url;
+        let auth_endpoint = req.body.auth_endpoint || req.query.auth_endpoint;
+        let credentials = req.body.credentials || req.query.credentials;
 
         // If url is a single string with spaces, split it into parts
         if (url && typeof url === 'string' && url.split(' ').length > 1) {
